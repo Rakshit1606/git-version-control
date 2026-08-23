@@ -16,7 +16,13 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
+                sh '''
+                    rm -rf deployed-app
+                    mkdir deployed-app
+                    cp Jenkinsfile deployed-app/
+                    echo "Application deployed successfully."
+                    ls -l deployed-app
+                '''
             }
         }
     }
